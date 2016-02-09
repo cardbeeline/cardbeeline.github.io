@@ -7,6 +7,7 @@
 .sharemenu .active{ display:block }
 
 .content-wrap {border-radius: 5px; min-height: 50px; position: relative; background-color: #fff; padding-bottom: 30px; }
+strong { font-weight: bold; }
 ul, p{line-height:1.462; font-size:100%}
 body {min-width:200px}
 

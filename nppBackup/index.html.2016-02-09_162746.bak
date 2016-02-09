@@ -64,9 +64,9 @@
 														<button class="sharebutton mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">	<i class="material-icons">share</i>	</button>
 														{{> sharemenu .. }}
 											</div>
-										<h3> 
+										<h2> 
 											{{title}}
-										</h3>
+										</h2>
 								</div>
 									<p><strong>{{#if parentId}}{{parentId.subtitle}}{{else}}{{subtitle}}{{/if}}</strong></p>
 									{{{contentText}}}

@@ -1,4 +1,3 @@
-.content {margin-right:5px; margin-left: 10px}
 .content-block.common{width:100%; color:#282828 }
 .content .media img {width:75%;text-align:center; display:block;margin:0 auto}
 .cardmenu {width:48px; z-index:1006; text-align: right; color: #9d9cab}
@@ -6,12 +5,13 @@
 .sharemenu .hidden{display:none !important}
 .sharemenu .active{ display:block }
 
-.content-wrap {border-radius: 5px; min-height: 50px; position: relative; background-color: #fff; padding-bottom: 30px; }
+.content-wrap { box-shadow: #9d9cab 0px 15px 10px -13px; padding-bottom: 30px;  position: relative;}
+strong { font-weight: bold; }
 ul, p{line-height:1.462; font-size:100%}
 body {min-width:200px}
 
-.panels .chew-cell { padding: 10px; width: 33%; min-width: 240px; }
-
+.panels .chew-cell { padding: 0.5em; width: 33%; min-width: 240px; }
+ 
 
 .beecard_panel_button { display: block; height: 30px; width: 100%; padding: 15px 0px; text-align: center; position: absolute; bottom: 0px; }
 
