@@ -1,6 +1,9 @@
-.content {margin-right:5px; margin-left: 10px}
+.content { max-width:2000px; margin:0 auto}
+.chew-row {margin-right:5px; margin-left: 5px;}
 .content-block.common{width:100%; color:#282828 }
-.content .media img {width:75%;text-align:center; display:block;margin:0 auto}
+.content .media img {width:75%;text-align:center; display:block;margin:20px auto}
+.content .media h3::before {width:100%}
+.content .media h3 {margin-bottom:10px}
 .cardmenu {width:48px; z-index:1006; text-align: right; color: #9d9cab}
 .sharemenu { margin-bottom : 5px !important; color: #9d9cab}
 .sharemenu .hidden{display:none !important}
