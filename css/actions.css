@@ -11,6 +11,7 @@
 
 .content-wrap {border-radius: 5px; min-height: 50px; position: relative; background-color: #fff; padding-bottom: 30px; }
 ul, p{line-height:1.462; font-size:100%}
+body {width:auto}
 
 .panels .chew-cell { padding: 10px; width: 33%;}
 .btn-link { line-height: 35px; }
