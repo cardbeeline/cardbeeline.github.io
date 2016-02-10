@@ -67,7 +67,7 @@
 										</h3>
 								</div>
 											<div class="mdl-card__menu cardmenu">
-														<button class="sharebutton mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">	<i class="fa fa-share-alt"></i>	</button>
+														<button class="sharebutton mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">	<i class="material-icons">share</i>	</button>
 														{{> sharemenu .. }}
 											</div>
 
