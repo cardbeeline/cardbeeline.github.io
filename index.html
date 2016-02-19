@@ -135,12 +135,12 @@
 					var template = Handlebars.compile(tableTemplate);
 
 					Handlebars.registerHelper("EAN", function (item) {
-						return vars["EAN"];
+						return EAN;
 					});
 					
 					Handlebars.registerHelper("urlParams", function (targetURL) {
 						if (targetURL.indexOf(".admitad.") > -1)
-							return targetURL+"?subid=" + vars["EAN"];
+							return targetURL.concat("?subid=").concat(EAN);
 						else 
 							return targetURL;
 					});
