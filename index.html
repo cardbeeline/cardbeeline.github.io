@@ -72,7 +72,7 @@
 								
 								</div>
 								<div class="beecard_panel_button">
-									<a class="btn-link" href="{{targetURL}}{{urlParams}}" target="_blank" id="click-{{#if sourceId}}{{sourceId}}{{else}}{{contentId}}{{/if}}"> <i class="fa fa-shopping-cart"></i>
+									<a class="btn-link" href="{{targetURL urlParams}}" target="_blank" id="click-{{#if sourceId}}{{sourceId}}{{else}}{{contentId}}{{/if}}"> <i class="fa fa-shopping-cart"></i>
 									&nbsp; {{#if targetName}}{{targetName}}{{else}}Начать покупки{{/if}}</a>
 								</div> 
 
@@ -138,11 +138,11 @@
 						return vars["EAN"];
 					});
 					
-					Handlebars.registerHelper("urlParams", function (item) {
-						if (item.targetURL.indexOf(".admitad.") > -1)
-							return "?subid=" + vars["EAN"];
+					Handlebars.registerHelper("urlParams", function (targetURL) {
+						if (targetURL.indexOf(".admitad.") > -1)
+							return targetURL+"?subid=" + vars["EAN"];
 						else 
-							return "";
+							return targetURL;
 					});
 
 					var templateContent = template({
