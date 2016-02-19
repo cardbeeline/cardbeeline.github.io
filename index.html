@@ -4,7 +4,7 @@
 		<meta http-equiv="Cache-Control" content="no-cache" />
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5, user-scalable=yes" />		
-		<title>Партнеры карты "Билайн"</title>
+		<title>Акции карты "Билайн"</title>
 
 		<!-- Stylesheets 
 		<link href="css/global.css" rel="stylesheet"></link>
@@ -72,7 +72,7 @@
 								
 								</div>
 								<div class="beecard_panel_button">
-									<a class="btn-link" href="{{targetURL}}{{#if parentId}}?subid={{EAN}}{{/if}}" target="_blank" id="click-{{#if sourceId}}{{sourceId}}{{else}}{{contentId}}{{/if}}"> <i class="fa fa-shopping-cart"></i>
+									<a class="btn-link" href="{{targetURL}}{{urlParams}}" target="_blank" id="click-{{#if sourceId}}{{sourceId}}{{else}}{{contentId}}{{/if}}"> <i class="fa fa-shopping-cart"></i>
 									&nbsp; {{#if targetName}}{{targetName}}{{else}}Начать покупки{{/if}}</a>
 								</div> 
 
@@ -136,6 +136,13 @@
 
 					Handlebars.registerHelper("EAN", function (item) {
 						return vars["EAN"];
+					});
+					
+					Handlebars.registerHelper("urlParams", function (item) {
+						if (item.get("targetURL").indexOf(".admitad.") > -1)
+							return "?subid=" + vars["EAN"];
+						else 
+							return "";
 					});
 
 					var templateContent = template({
