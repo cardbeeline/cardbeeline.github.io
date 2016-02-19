@@ -139,7 +139,7 @@
 					});
 					
 					Handlebars.registerHelper("urlParams", function (item) {
-						if (item.get("targetURL").indexOf(".admitad.") > -1)
+						if (item.targetURL.indexOf(".admitad.") > -1)
 							return "?subid=" + vars["EAN"];
 						else 
 							return "";
