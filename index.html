@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 	<head>
 		<meta http-equiv="Cache-Control" content="no-cache" />
@@ -41,7 +41,7 @@
 		})(window,document,'script','dataLayer','GTM-T29DH2');</script>
 		<!-- End Google Tag Manager -->
 
-		<script type="text/x-handlebars-template" id="share-menu"">
+		<script type="text/x-handlebars-template" id="share-menu">
 			{{#sm}}
 				<button class="sharemenu mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect hidden" title="{{title}}" data-type="{{dt}}">	<i class="fa {{class}}"></i>	</button>
 			{{/sm}}
@@ -139,7 +139,7 @@
 					});
 					
 					Handlebars.registerHelper("urlParams", function (targetURL) {
-						if (targetURL.indexOf(".admitad.") > -1)
+						if (targetURL.indexOf(".admitad.") > -1 || targetURL.indexOf(".com/g/") > -1)
 							return targetURL.concat("?subid=").concat(EAN);
 						else 
 							return targetURL;
@@ -195,7 +195,7 @@ Share = {
                     count_url:  location.href,  // для какой ссылки крутим счётчик
                     title:      document.title, // заголовок шаринга
                     image:        '',             // картинка шаринга
-                    text:       '',             // текст шаринга
+                    text:       ''             // текст шаринга
                 },
                 $(_element).data(), // Если параметры заданы в data, то читаем их
                 _options            // Параметры из вызова метода имеют наивысший приоритет
@@ -226,7 +226,7 @@ Share = {
                 url:    location.href,
                 title:  document.title,
                 image:  '',
-                text:   '',
+                text:   ''
             }, _options);
 
         return 'http://vkontakte.ru/share.php?'
@@ -241,7 +241,7 @@ Share = {
     ok: function(_options) {
         var options = $.extend({
                 url:    location.href,
-                text:   '',
+                text:   ''
             }, _options);
 
         return 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1'
@@ -255,7 +255,7 @@ Share = {
                 url:    location.href,
                 title:  document.title,
                 image:  '',
-                text:   '',
+                text:   ''
             }, _options);
 
         return 'http://www.facebook.com/sharer.php?s=100'
@@ -270,7 +270,7 @@ Share = {
         var options = $.extend({
                 url:    location.href,
                 title:  document.title,
-                text:   '',
+                text:   ''
             }, _options);
 
         return 'http://livejournal.com/update.bml?'
@@ -284,7 +284,7 @@ Share = {
         var options = $.extend({
                 url:        location.href,
                 count_url:  location.href,
-                title:      document.title,
+                title:      document.title
             }, _options);
 
         return 'http://twitter.com/share?'
@@ -299,7 +299,7 @@ Share = {
                 url:    location.href,
                 title:  document.title,
                 image:  '',
-                text:   '',
+                text:   ''
             }, _options);
 
         return 'http://connect.mail.ru/share?'
