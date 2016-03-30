@@ -91,8 +91,9 @@
 
 			var vars = {};
 			var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-					vars[key] = value;
+					vars[key.toLowerCase()] = value;
 				});
+
 			var sm = [{"title":"ВКонтакте", "class":"fa-vk", "dt":"vk", "url":"http://vk.com"},
 					  {"title":"Одноклассники", "class":"fa-odnoklassniki", "dt":"ok", "url":"http://ok.ru"},
 					  {"title":"Facebook", "class":"fa-facebook", "dt":"fb", "url":"http://fb.com"},
@@ -103,6 +104,7 @@
 			var EAN = vars["ean"];
 			var city = vars["city"];
 			var name = vars["name"];
+
 			Parse.initialize("27OaUv04EXFliQUSh0Nv6K49YIITL1m7g79CBEum", "nlfPaLHJejOkEY9ATKrpkuhogwJgNYs4anMJ9bLC");
 			if (typeof session !== "undefined") {
 				Parse.User.become(session);
