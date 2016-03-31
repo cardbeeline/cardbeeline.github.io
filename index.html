@@ -91,8 +91,9 @@
 
 			var vars = {};
 			var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-					vars[key] = value;
+					vars[key.toLowerCase()] = value;
 				});
+
 			var sm = [{"title":"ВКонтакте", "class":"fa-vk", "dt":"vk", "url":"http://vk.com"},
 					  {"title":"Одноклассники", "class":"fa-odnoklassniki", "dt":"ok", "url":"http://ok.ru"},
 					  {"title":"Facebook", "class":"fa-facebook", "dt":"fb", "url":"http://fb.com"},
