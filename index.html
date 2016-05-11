@@ -171,7 +171,7 @@
 
 				},
 				error : function (error) {
-					alert("Error: " + error.code + " " + error.message);
+					dataLayer.push({"event":"alert_showed", "alert_message":"Error: " + error.code + " " + error.message});
 				}
 			});
 
