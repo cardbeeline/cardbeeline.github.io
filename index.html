@@ -41,13 +41,7 @@
 		})(window,document,'script','dataLayer','GTM-T29DH2');</script>
 		<!-- End Google Tag Manager -->
 
-		<script type="text/x-handlebars-template" id="share-menu">
-			{{#sm}}
-				<button class="sharemenu mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect hidden" title="{{title}}" data-type="{{dt}}">	<i class="fa {{class}}"></i>	</button>
-			{{/sm}}
-		</script>
 
-														
 		<div class="content clearfix" id = "partners" >
 
 			<script type="text/x-handlebars-template" id='table-data'>
@@ -94,12 +88,6 @@
 					vars[key.toLowerCase()] = value;
 				});
 
-			var sm = [{"title":"ВКонтакте", "class":"fa-vk", "dt":"vk", "url":"http://vk.com"},
-					  {"title":"Одноклассники", "class":"fa-odnoklassniki", "dt":"ok", "url":"http://ok.ru"},
-					  {"title":"Facebook", "class":"fa-facebook", "dt":"fb", "url":"http://fb.com"},
-					  {"title":"Twitter","class":"fa-twitter", "dt":"tw","url":"http://twitter.com"}
-			];
-
 			var session = vars["session"];
 			var EAN = vars["ean"];
 			var city = vars["city"];
@@ -116,7 +104,6 @@
 			query.greaterThanOrEqualTo("actualTo", new Date());
 			query.descending("sortIndex,createdAt");
 			var tableTemplate = $("#table-data").html();
-			var sharemenuTemplate = $("#share-menu").html();
 
 			query.find({
 				success : function (results) {
@@ -130,8 +117,6 @@
                         }
 					}
 
-					
-					var sharepartial = Handlebars.registerPartial("sharemenu", sharemenuTemplate);
 					var template = Handlebars.compile(tableTemplate);
 
 					Handlebars.registerHelper("EAN", function (item) {
@@ -146,181 +131,17 @@
 					});
 
 					var templateContent = template({
-							items : items,
-							sm : sm
+							items : items
+//							,sm : sm
 						});
 					$("#partners").append(templateContent);
 					
-					$(".sharebutton").click(function () {
-						$(".sharebutton").each(function () {
-						 if ($(this).hasClass('less')) {
-							$(this).removeClass('less');
-							$(this).toggle();
-							$(this).nextAll(".sharemenu").addClass("hidden");
-							
-						}
-						});
-						$(this).addClass("less");
-						$(this).toggle();
-						$(this).nextAll(".sharemenu").removeClass("hidden");
-						
-						return false;
-					});
-
 				},
 				error : function (error) {
 					dataLayer.push({"event":"alert_showed", "alert_message":"Error: " + error.code + " " + error.message});
 				}
 			});
 
-
-Share = {
-    /**
-     * Показать пользователю дилог шаринга в сооветствии с опциями
-     * Метод для использования в inline-js в ссылках
-     * При блокировке всплывающего окна подставит нужный адрес и ползволит браузеру перейти по нему
-     *
-     * @example <a href="" onclick="return share.go(this)">like+</a>
-     *
-     * @param Object _element - элемент DOM, для которого
-     * @param Object _options - опции, все необязательны
-     */
-    go: function(_element, _options) {
-        var
-            self = Share,
-            options = $.extend(
-                {
-                    type:       'vk',    // тип соцсети
-                    url:        location.href,  // какую ссылку шарим
-                    count_url:  location.href,  // для какой ссылки крутим счётчик
-                    title:      document.title, // заголовок шаринга
-                    image:        '',             // картинка шаринга
-                    text:       ''             // текст шаринга
-                },
-                $(_element).data(), // Если параметры заданы в data, то читаем их
-                _options            // Параметры из вызова метода имеют наивысший приоритет
-            );
-
-        if (self.popup(link = self[options.type](options)) === null) {
-            // Если не удалось открыть попап
-            if ( $(_element).is('a') ) {
-                // Если это <a>, то подставляем адрес и просим браузер продолжить переход по ссылке
-                $(_element).prop('href', link);
-                return true;
-            }
-            else {
-                // Если это не <a>, то пытаемся перейти по адресу
-                location.href = link;
-                return false;
-            }
-        }
-        else {
-            // Попап успешно открыт, просим браузер не продолжать обработку
-            return false;
-        }
-    },
-
-    // ВКонтакте
-    vk: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                title:  document.title,
-                image:  '',
-                text:   ''
-            }, _options);
-
-        return 'http://vkontakte.ru/share.php?'
-            + 'url='          + encodeURIComponent(options.url)
-            + '&title='       + encodeURIComponent(options.title)
-            + '&description=' + encodeURIComponent(options.text)
-            + '&image='       + encodeURIComponent(options.image)
-            + '&noparse=true';
-    },
-
-    // Одноклассники
-    ok: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                text:   ''
-            }, _options);
-
-        return 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1'
-            + '&st.comments=' + encodeURIComponent(options.text)
-            + '&st._surl='    + encodeURIComponent(options.url);
-    },
-
-    // Facebook
-    fb: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                title:  document.title,
-                image:  '',
-                text:   ''
-            }, _options);
-
-        return 'http://www.facebook.com/sharer.php?s=100'
-            + '&p[title]='     + encodeURIComponent(options.title)
-            + '&p[summary]='   + encodeURIComponent(options.text)
-            + '&p[url]='       + encodeURIComponent(options.url)
-            + '&p[images][0]=' + encodeURIComponent(options.image);
-    },
-
-    // Живой Журнал
-    lj: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                title:  document.title,
-                text:   ''
-            }, _options);
-
-        return 'http://livejournal.com/update.bml?'
-            + 'subject='        + encodeURIComponent(options.title)
-            + '&event='         + encodeURIComponent(options.text + '<br/><a href="' + options.url + '">' + options.title + '</a>')
-            + '&transform=1';
-    },
-
-    // Твиттер
-    tw: function(_options) {
-        var options = $.extend({
-                url:        location.href,
-                count_url:  location.href,
-                title:      document.title
-            }, _options);
-
-        return 'http://twitter.com/share?'
-            + 'text='      + encodeURIComponent(options.title)
-            + '&url='      + encodeURIComponent(options.url)
-            + '&counturl=' + encodeURIComponent(options.count_url);
-    },
-
-    // Mail.Ru
-    mr: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                title:  document.title,
-                image:  '',
-                text:   ''
-            }, _options);
-
-        return 'http://connect.mail.ru/share?'
-            + 'url='          + encodeURIComponent(options.url)
-            + '&title='       + encodeURIComponent(options.title)
-            + '&description=' + encodeURIComponent(options.text)
-            + '&imageurl='    + encodeURIComponent(options.image);
-    },
-
-    // Открыть окно шаринга
-    popup: function(url) {
-        return window.open(url,'','toolbar=0,status=0,scrollbars=1,width=626,height=436');
-    }
-}
-
-$(document).on('click', '.sharemenu', function(){
-    Share.go(this);
-});
-
-			
-			
 		</script>
 	</body>
 </html>
